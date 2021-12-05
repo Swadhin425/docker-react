@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t swadhinnayak/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true swadhinnayak/docker-react npm run test -- --coverage
